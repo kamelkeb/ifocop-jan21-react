@@ -2,7 +2,7 @@
 //npx create-react-app nom-app
 
 /**
- * Puis entrer dans le dossier créé, pui "code ."
+ * Puis entrer dans le dossier créé, puis "code ."
  * Ensuite "npm start" pour lancer le serveur de dev
  *
  */

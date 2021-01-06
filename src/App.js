@@ -1,20 +1,25 @@
 import React, { useState } from "react";
 import "./App.css";
 import { ColoredSquare } from "./components/ColoredSquare";
+import { Header } from "./components/Header/Header";
 
 const App = () => {
   const username = "Kelly";
   const ilFaitBeau = Math.random() < 0.5 ? true : false;
 
-  const message = ilFaitBeau ? (
-    <p>Quelle belle journée! Accessoire de la journée: Chapeau!</p>
-  ) : (
-    <p>Attention au vent! Accessoire de la journée: Parapluie!</p>
-  );
+  const message = ilFaitBeau
+    ? "Quelle belle journée! Accessoire de la journée: Chapeau!"
+    : "Attention au vent! Accessoire de la journée: Parapluie!";
 
-  const colors = ["pink", "blue", "green", "red"];
+  const colors = [
+    { color: "pink", id: "mon_app_squarerd_li1" },
+    { color: "blue", id: "mon_app_squarerd_li2" },
+    { color: "green", id: "mon_app_squarerd_li3" },
+    { color: "red", id: "mon_app_squarerd_li4" },
+  ];
   return (
     <div className="App">
+      <Header username={username}></Header>
       Ma première app
       <ColoredSquare color="green" side="400px" message={message}>
         <button style={{ width: "80%" }}>Enfant de ColoredSquare</button>
@@ -23,8 +28,8 @@ const App = () => {
       <ColoredSquare color="grey" side="300px">
         <ul>
           {colors.map((c) => (
-            <li>
-              <ColoredSquare color={c}></ColoredSquare>
+            <li key={c.id}>
+              <ColoredSquare color={c.color}></ColoredSquare>
             </li>
           ))}
         </ul>
@@ -41,7 +46,7 @@ ColoredSquare({
   color: "green",
   side: "160px",
   message: "Salut!",
-  childre: [
+  children: [
     <button style={{ width: "80%" }}>Enfant de ColoredSquare</button>,
     ColoredSquare({
       color: "red",
