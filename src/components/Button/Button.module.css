@@ -1,0 +1,10 @@
+.myButton {
+  border-radius: 10px;
+  background-color: var(--my-button);
+  color: white;
+  margin: 10px;
+  box-shadow: rgba(0, 0, 139, 0.7) 2px 2px 2px;
+  font-weight: bold;
+  font-size: 20px;
+  width: 120px;
+}

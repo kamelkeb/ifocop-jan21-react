@@ -14,9 +14,17 @@
  */
 
 /**
- * Ennoncé TP1:
+ * Enoncé TP1:
  * 1- Donner un peu de style pour agencer les boutons.
  * 2- Extraire du code de App.js, un composant, que l'on appelera Buttons,
  * et qui contiendra les 4 boutons mais sans contenir le carré coloré.
  * 3- Faire en sorte que les styles de ce composant soient mis dans un module CSS.
+ */
+
+/**
+ * Enoncé TP2:
+ * Implémenter les callbacks nécessaires pour effecteur les modifications
+ * de valeurs des différentes coulrs rgb, et de la luminausité, et les passer via
+ * des props aux boutons adéquats.
+ *
  */

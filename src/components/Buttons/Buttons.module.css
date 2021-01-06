@@ -1,0 +1,10 @@
+.buttons {
+  display: flex;
+  flex-direction: column;
+  padding: 32px;
+}
+
+.blockPlusMoins {
+  display: flex;
+  padding: 8px;
+}
