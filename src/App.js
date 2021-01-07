@@ -3,21 +3,14 @@ import "./App.css";
 import { ColoredSquare } from "./components/ColoredSquare";
 import { Header } from "./components/Header/Header";
 import { Buttons } from "./components/Buttons/Buttons";
+import { InputDelta } from "./components/InputDelta/InputDelta";
 const App = () => {
-  const colors = [
-    { color: "pink", id: "mon_app_squarerd_li1" },
-    { color: "blue", id: "mon_app_squarerd_li2" },
-    { color: "green", id: "mon_app_squarerd_li3" },
-    { color: "red", id: "mon_app_squarerd_li4" },
-  ];
   const [compteur, setCompteur] = useState(100);
   const [visible, setVisible] = useState(true);
   const [colorObj, setColorObj] = useState({ r: 255, g: 0, b: 0, a: 50 });
-
+  const [deltaColor, setDeltaColor] = useState(10);
   const agrandirHandler = () => setCompteur((oldCompteur) => oldCompteur + 10);
   const raptissirHandler = () => setCompteur((oldCompteur) => oldCompteur - 10);
-
-  const deltaColor = 10;
 
   const addWithinLimits = (c, d) => Math.min(255, Math.max(0, c + d));
   // autre version, moins lisible
@@ -63,6 +56,8 @@ const App = () => {
   return (
     <div className="App">
       <Header></Header>
+
+      <InputDelta value={deltaColor} onDeltaChange={setDeltaColor}></InputDelta>
 
       <Buttons
         callback1={agrandirHandler}
