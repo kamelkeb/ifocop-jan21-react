@@ -17,28 +17,31 @@ export const Buttons = ({
 }) => {
   return (
     <div className={classes.buttons}>
-      <Button onClick={callback1}>Agrandir</Button>
-      <Button onClick={callback2}>Raptisser</Button>
-
-      <Button onClick={() => callback3(true)}>Afficher</Button>
-      <Button onClick={() => callback3(false)}>Cacher</Button>
-      <div className={classes.blockPlusMoins}>
+      <div className={classes.block}>
+        <Button onClick={callback1}>Agrandir</Button>
+        <Button onClick={callback2}>Raptisser</Button>
+      </div>{" "}
+      <div className={classes.block}>
+        <Button onClick={() => callback3(true)}>Afficher</Button>
+        <Button onClick={() => callback3(false)}>Cacher</Button>
+      </div>
+      <div className={classes.block}>
         <p>Agir sur le rouge:</p>
         <Button onClick={diminuerR}>-</Button>
         <Button onClick={augmenterR}>+</Button>
       </div>
-      <div className={classes.blockPlusMoins}>
+      <div className={classes.block}>
         <p>Agir sur le vert:</p>
         <Button onClick={diminuerG}>-</Button>
         <Button onClick={augmenterG}>+</Button>
       </div>
-      <div className={classes.blockPlusMoins}>
+      <div className={classes.block}>
         <p>Agir sur le bleu:</p>
 
         <Button onClick={diminuerB}>-</Button>
         <Button onClick={augmenterB}>+</Button>
       </div>
-      <div className={classes.blockPlusMoins}>
+      <div className={classes.block}>
         <p>Agir sur la luminausité:</p>
         <Button onClick={diminuerLumi}>-</Button>
         <Button onClick={agmenterLumi}>+</Button>

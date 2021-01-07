@@ -4,7 +4,11 @@
   padding: 32px;
 }
 
-.blockPlusMoins {
+.block {
   display: flex;
-  padding: 8px;
+
+  border: solid 2px black;
+  padding: 16px;
+  width: 300px;
+  margin: 32px;
 }

@@ -1,9 +1,39 @@
 .header {
   display: flex;
-
+  flex-direction: row;
   align-items: center;
+  justify-content: space-between;
   background-color: rgb(49, 180, 180);
   width: 100%;
   height: 60px;
   padding: 16px;
+  margin: 2px;
+}
+
+.menuIcon {
+  height: 48px;
+  width: 48px;
+  color: rgb(74, 74, 80);
+  margin: 16px;
+  cursor: pointer;
+}
+
+.logoutIcon {
+  height: 48px;
+  width: 48px;
+  color: rgb(74, 74, 80);
+  margin: 16px;
+  margin-right: 32px;
+  cursor: pointer;
+}
+
+.titre {
+  font-weight: bold;
+  align-self: center;
+  margin-top: 28px;
+}
+
+.message {
+  margin: 16px;
+  padding: 8px;
 }
