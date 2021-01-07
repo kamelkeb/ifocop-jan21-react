@@ -1,7 +1,20 @@
 import React from "react";
 import classes from "./Buttons.module.css";
 import { Button } from "../Button/Button";
-export const Buttons = ({ callback1, callback2, callback3, compteur }) => {
+export const Buttons = ({
+  callback1,
+  callback2,
+  callback3,
+  compteur,
+  augmenterR,
+  diminuerR,
+  augmenterG,
+  diminuerG,
+  augmenterB,
+  diminuerB,
+  agmenterLumi,
+  diminuerLumi,
+}) => {
   return (
     <div className={classes.buttons}>
       <Button onClick={callback1}>Agrandir</Button>
@@ -11,24 +24,24 @@ export const Buttons = ({ callback1, callback2, callback3, compteur }) => {
       <Button onClick={() => callback3(false)}>Cacher</Button>
       <div className={classes.blockPlusMoins}>
         <p>Agir sur le rouge:</p>
-        <Button onClick={() => {}}>-</Button>
-        <Button onClick={() => {}}>+</Button>
+        <Button onClick={diminuerR}>-</Button>
+        <Button onClick={augmenterR}>+</Button>
       </div>
       <div className={classes.blockPlusMoins}>
         <p>Agir sur le vert:</p>
-        <Button onClick={() => {}}>-</Button>
-        <Button onClick={() => {}}>+</Button>
+        <Button onClick={diminuerG}>-</Button>
+        <Button onClick={augmenterG}>+</Button>
       </div>
       <div className={classes.blockPlusMoins}>
         <p>Agir sur le bleu:</p>
 
-        <Button onClick={() => {}}>-</Button>
-        <Button onClick={() => {}}>+</Button>
+        <Button onClick={diminuerB}>-</Button>
+        <Button onClick={augmenterB}>+</Button>
       </div>
       <div className={classes.blockPlusMoins}>
         <p>Agir sur la luminausité:</p>
-        <Button onClick={() => {}}>-</Button>
-        <Button onClick={() => {}}>+</Button>
+        <Button onClick={diminuerLumi}>-</Button>
+        <Button onClick={agmenterLumi}>+</Button>
       </div>
     </div>
   );

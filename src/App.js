@@ -12,19 +12,54 @@ const App = () => {
   ];
   const [compteur, setCompteur] = useState(100);
   const [visible, setVisible] = useState(true);
-  const [red, setRed] = useState(255);
-  const [green, setgreen] = useState(0);
-  const [blue, setBlue] = useState(0);
+  const [colorObj, setColorObj] = useState({ r: 255, g: 0, b: 0, a: 50 });
 
   const agrandirHandler = () => setCompteur((oldCompteur) => oldCompteur + 10);
   const raptissirHandler = () => setCompteur((oldCompteur) => oldCompteur - 10);
 
-  const rgbString = "rgb(220,12,0)";
+  const deltaColor = 10;
 
-  Array.from(rgbString);
+  const addWithinLimits = (c, d) => Math.min(255, Math.max(0, c + d));
+  // autre version, moins lisible
+  const addWithinLimits2 = (c, d) =>
+    c + d > 255 ? 255 : c + d < 0 ? 0 : c + d;
 
-  const color = `rgb(${red}, ${green}, ${blue})`;
+  const affectSpecificField = (setter, field, delta) => {
+    setter((colorObj) => {
+      return { ...colorObj, [field]: addWithinLimits(colorObj[field], delta) };
+    });
+  };
+  const augmenterR = () => affectSpecificField(setColorObj, "r", deltaColor);
+  const diminuerR = () => affectSpecificField(setColorObj, "r", -deltaColor);
 
+  const augmenterG = () => affectSpecificField(setColorObj, "g", deltaColor);
+  const diminuerG = () => affectSpecificField(setColorObj, "g", -deltaColor);
+
+  const augmenterB = () => affectSpecificField(setColorObj, "b", deltaColor);
+  const diminuerB = () => affectSpecificField(setColorObj, "b", -deltaColor);
+
+  const agmenterLumi = () => {
+    augmenterR();
+    augmenterG();
+    augmenterB();
+  };
+
+  const diminuerLumi = () => {
+    diminuerR();
+    diminuerG();
+    diminuerB();
+  };
+
+  const colorActions = {
+    augmenterR,
+    diminuerR,
+    augmenterG,
+    diminuerG,
+    augmenterB,
+    diminuerB,
+    agmenterLumi,
+    diminuerLumi,
+  };
   return (
     <div className="App">
       <Header></Header>
@@ -33,24 +68,16 @@ const App = () => {
         callback1={agrandirHandler}
         callback2={raptissirHandler}
         callback3={setVisible}
+        {...colorActions}
         compteur={compteur}
       ></Buttons>
-      {visible && <ColoredSquare color={color} side={compteur}></ColoredSquare>}
+      {visible && (
+        <ColoredSquare
+          color={`rgb(${colorObj.r}, ${colorObj.g}, ${colorObj.b})`}
+          side={compteur}
+        ></ColoredSquare>
+      )}
     </div>
   );
 };
 export default App;
-
-//juste un exemple d'écriture avec appels de fonctions
-ColoredSquare({
-  color: "green",
-  side: "160px",
-  message: "Salut!",
-  children: [
-    <button style={{ width: "80%" }}>Enfant de ColoredSquare</button>,
-    ColoredSquare({
-      color: "red",
-      children: ColoredSquare({ color: "black" }),
-    }),
-  ],
-});
