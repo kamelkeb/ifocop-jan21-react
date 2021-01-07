@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-
 import classes from "./InputDelta.module.css";
 
 export const InputDelta = ({ value, onDeltaChange }) => {
