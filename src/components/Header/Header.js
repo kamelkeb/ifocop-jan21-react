@@ -2,6 +2,7 @@ import classes from "./Header.module.css";
 import React, { useState } from "react";
 
 import { Menu } from "../Menu/Menu";
+import { NavLink, Link } from "react-router-dom";
 
 export const Header = ({ username, isLoggedin, logout }) => {
   const [menuVisible, setmenuVisible] = useState(false);
@@ -26,15 +27,16 @@ export const Header = ({ username, isLoggedin, logout }) => {
           onClick={logout}
         ></img>
       ) : (
-        "Se connecter"
+        <Link to="/login">Se connecter</Link>
       )}
       {menuVisible && (
         <Menu
           entries={[
-            { title: "Ajusteur de couleurs" },
-            { title: "Compteur" },
-            { title: "Log out" },
+            { title: "Ajusteur de couleurs", path: "/ajustcouleur" },
+            { title: "Compteur", path: "" },
+            { title: "Log out", path: "" },
           ]}
+          hide={() => setmenuVisible(false)}
         ></Menu>
       )}
     </div>
