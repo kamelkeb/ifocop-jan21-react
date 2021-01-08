@@ -4,11 +4,16 @@ import { ColoredSquare } from "./components/ColoredSquare";
 import { Header } from "./components/Header/Header";
 import { Buttons } from "./components/Buttons/Buttons";
 import { InputDelta } from "./components/InputDelta/InputDelta";
+import { LoginForm } from "./components/LoginForm.js/LoginForm";
 const App = () => {
   const [compteur, setCompteur] = useState(100);
   const [visible, setVisible] = useState(true);
   const [colorObj, setColorObj] = useState({ r: 255, g: 0, b: 0, a: 50 });
   const [deltaColor, setDeltaColor] = useState(10);
+  const [credentials, setCredentials] = useState({
+    username: "",
+    password: "",
+  });
   const agrandirHandler = () => setCompteur((oldCompteur) => oldCompteur + 10);
   const raptissirHandler = () => setCompteur((oldCompteur) => oldCompteur - 10);
 
@@ -53,10 +58,14 @@ const App = () => {
     agmenterLumi,
     diminuerLumi,
   };
+  const credentialsSubmission = (truc) => {
+    setCredentials(truc);
+  };
+
   return (
     <div className="App">
-      <Header></Header>
-
+      <Header username={credentials.username}></Header>
+      <LoginForm credentialsSubmission={credentialsSubmission}></LoginForm>
       <InputDelta value={deltaColor} onDeltaChange={setDeltaColor}></InputDelta>
 
       <Buttons
