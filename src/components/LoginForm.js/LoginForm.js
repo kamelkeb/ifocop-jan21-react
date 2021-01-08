@@ -23,7 +23,7 @@ export const LoginForm = ({ credentialsSubmission }) => {
     event.preventDefault();
     credentialsSubmission({
       username: credentials.username?.trim(),
-      password: credentials?.trim(),
+      password: credentials.password?.trim(),
     });
   };
   return (

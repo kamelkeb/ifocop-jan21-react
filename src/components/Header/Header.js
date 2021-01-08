@@ -3,7 +3,7 @@ import React, { useState } from "react";
 
 import { Menu } from "../Menu/Menu";
 
-export const Header = ({ username }) => {
+export const Header = ({ username, isLoggedin, logout }) => {
   const [menuVisible, setmenuVisible] = useState(false);
   const prenom = username || "toi";
   return (
@@ -18,11 +18,16 @@ export const Header = ({ username }) => {
         <div className={classes.titre}>Ma première app</div>
         <div className={classes.message}>Salut {prenom}!</div>
       </div>
-      <img
-        className={classes.logoutIcon}
-        src="./assets/log-out-outline.svg"
-        alt=""
-      ></img>
+      {isLoggedin ? (
+        <img
+          className={classes.logoutIcon}
+          src="./assets/log-out-outline.svg"
+          alt=""
+          onClick={logout}
+        ></img>
+      ) : (
+        "Se connecter"
+      )}
       {menuVisible && (
         <Menu
           entries={[

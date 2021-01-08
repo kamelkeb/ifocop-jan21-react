@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./App.css";
 import { ColoredSquare } from "./components/ColoredSquare";
 import { Header } from "./components/Header/Header";
@@ -14,6 +14,24 @@ const App = () => {
     username: "",
     password: "",
   });
+  const [isLoggedin, setIsLoggedin] = useState(false);
+
+  useEffect(() => {
+    document.title = "Hello " + credentials.username;
+    console.log(`exécution de la fonction passée à useEffect lors du premier rendu
+    et à chaque fois qu'une
+    des dépendances change de valeur`);
+    return () => {
+      console.log("exécuté à la mort (démontage du DOM) du composant");
+      // On mettra ici des traitement de nettoyage
+      // fermeture de connexion, démobiliser une ressource
+    };
+  }, [credentials]);
+  // Remarque: si j'avais voulu que l'effet s'exécute à chaque rendu, il aurait suffit
+  // de ne pas passer de tableau en deuxième argument.
+  // Et si j'avais voulu une exécution seulement lors du premier rendu, alors
+  // il aurait suffit de passer un tableau vide en scond argument à useEffect.
+
   const agrandirHandler = () => setCompteur((oldCompteur) => oldCompteur + 10);
   const raptissirHandler = () => setCompteur((oldCompteur) => oldCompteur - 10);
 
@@ -59,12 +77,22 @@ const App = () => {
     diminuerLumi,
   };
   const credentialsSubmission = (truc) => {
+    setIsLoggedin(true);
     setCredentials(truc);
+  };
+
+  const logout = () => {
+    setIsLoggedin(false);
+    setCredentials({ username: "", password: "" });
   };
 
   return (
     <div className="App">
-      <Header username={credentials.username}></Header>
+      <Header
+        username={credentials.username}
+        isLoggedin={isLoggedin}
+        logout={logout}
+      ></Header>
       <LoginForm credentialsSubmission={credentialsSubmission}></LoginForm>
       <InputDelta value={deltaColor} onDeltaChange={setDeltaColor}></InputDelta>
 
